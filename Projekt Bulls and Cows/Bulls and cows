@@ -1,0 +1,33 @@
+hlavicka = '''
+Bulls nad cows: druhy projekt do Engeto Online Python Akademie
+
+author: Milan Kročil
+email: milan.krocil@email.cz
+'''
+oddelovac = ('-' * 79)
+#print(hlavicka, oddelovac, sep="\n")
+
+#### Vygenerovani tajenky a kontrola duplicit ###############################
+import random
+#while True: 
+tajenka = str(random.randint(1000,9999))
+kontrola_duplicity_v_tajence = {}
+
+for cislo in tajenka:
+    if cislo in kontrola_duplicity_v_tajence:
+        kontrola_duplicity_v_tajence[cislo] += 1
+    else:
+        kontrola_duplicity_v_tajence[cislo] = 1
+
+print(kontrola_duplicity_v_tajence)
+for klic,hodnota in kontrola_duplicity_v_tajence.items():
+    if hodnota == 1:
+        print("tajenka je bez duplicit")
+        break
+    else:
+        #print('tajenka je v poradku')
+        print("jedna se o duplicitu")
+#print(type(tajenka))
+
+#osetreni_tajenky = tajenka.split()
+#print(osetreni_tajenky)
