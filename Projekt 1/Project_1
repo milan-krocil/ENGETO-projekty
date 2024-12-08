@@ -1,0 +1,11 @@
+kg_lb = 2.2
+km_mile = 0.62
+l_gal = 0.26
+
+kg_pocet = input('Zadej pocet kg:')
+km_pocet = inpurt ('Zadej pocet km:')
+l_pocet = inpurt ('Zadej pocet litru:')
+
+kg_vysledek = kg_pocet * kg_lb
+km_vysledek = km_pocet * km_mile
+l_vysledek = l_pocet * l_gal
