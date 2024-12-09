@@ -9,25 +9,31 @@ oddelovac = ('-' * 79)
 
 #### Vygenerovani tajenky a kontrola duplicit ###############################
 import random
-#while True: 
-tajenka = str(random.randint(1000,9999))
-kontrola_duplicity_v_tajence = {}
 
-for cislo in tajenka:
-    if cislo in kontrola_duplicity_v_tajence:
-        kontrola_duplicity_v_tajence[cislo] += 1
-    else:
-        kontrola_duplicity_v_tajence[cislo] = 1
+spravna_tajenka = True
 
-print(kontrola_duplicity_v_tajence)
-for klic,hodnota in kontrola_duplicity_v_tajence.items():
-    if hodnota == 1:
-        print("tajenka je bez duplicit")
-        break
-    else:
-        #print('tajenka je v poradku')
-        print("jedna se o duplicitu")
-#print(type(tajenka))
+while spravna_tajenka: 
+    tajenka = str(random.randint(1000,9999))
+    kontrola_duplicity_v_tajence = {}
+    duplicita = [0]
 
-#osetreni_tajenky = tajenka.split()
-#print(osetreni_tajenky)
+    for cislo in tajenka:
+        if cislo in kontrola_duplicity_v_tajence:
+            kontrola_duplicity_v_tajence[cislo] += 1
+        else:
+            kontrola_duplicity_v_tajence[cislo] = 1
+
+    print(kontrola_duplicity_v_tajence)
+    for hodnota in kontrola_duplicity_v_tajence.values():
+        if hodnota > 1:
+            duplicita.pop()
+            duplicita.append(hodnota)    
+            
+    if duplicita[0] <= 1:
+        spravna_tajenka = False
+            #else:
+            #print('tajenka je v poradku')
+#spravna_tajenka = False
+print("Muzeme pokracovat")
+print(tajenka)
+
