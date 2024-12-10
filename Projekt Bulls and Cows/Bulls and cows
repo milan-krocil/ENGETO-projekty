@@ -31,9 +31,38 @@ while spravna_tajenka:
             
     if duplicita[0] <= 1:
         spravna_tajenka = False
-            #else:
-            #print('tajenka je v poradku')
-#spravna_tajenka = False
-print("Muzeme pokracovat")
+          
+###### Zadani hrace a jeho osetreni ###############################################################          
 print(tajenka)
+#hadani_uzivatele = input("Enter a number: ")
+
+print(
+    "Hi there!",
+    oddelovac,
+    "I've generated a random 4 digit number for you.",
+    "Let's play a bulls and cows game.",
+    oddelovac, sep='\n'
+    )
+
+#print("Enter a number: ", hadani_uzivatele) 
+#print(oddelovac)
+
+#print(type(str(hadani_uzivatele)))
+
+osetreni_zadani = True
+
+while osetreni_zadani:
+    hadani_uzivatele = input("Enter a number: ")
+    print("Enter a number: ", hadani_uzivatele) 
+    print(oddelovac)
+    if not int(len(hadani_uzivatele)) == 4:
+        print("Hadane cislo nema 4 cislice", "Zadej hadane cislo znovu", sep="\n")
+    elif not hadani_uzivatele.isdigit():
+        print("Hadane cislo neobsahuje jen cislice", "Zadej hadane cislo znovu", sep="\n")
+    elif int(hadani_uzivatele[0]) == 0:
+        print("Hadane cislo nesmi zacinat nulou", "Zadej hadane cislo znovu", sep="\n")
+    else:
+        osetreni_zadani = False
+
+
 
