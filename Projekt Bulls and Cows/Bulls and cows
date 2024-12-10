@@ -10,24 +10,41 @@ oddelovac = ('-' * 79)
 #### Vygenerovani tajenky a kontrola duplicit ###############################
 import random
 
-spravna_tajenka = True
+def osetreni_duplicit_v_cisle (zadana_tajenka):
+    kontrola_duplicity = {}
+    je_duplicita = [0]
 
+    for zadane_cislo in zadana_tajenka:
+        if zadane_cislo in kontrola_duplicity:
+            kontrola_duplicity[zadane_cislo] += 1
+        else:
+            kontrola_duplicity[zadane_cislo] = 1
+
+    print(kontrola_duplicity)
+    for cislice in kontrola_duplicity.values():
+        if cislice > 1:
+            je_duplicita.pop()
+            je_duplicita.append(cislice) 
+    return je_duplicita
+
+spravna_tajenka = True
 while spravna_tajenka: 
     tajenka = str(random.randint(1000,9999))
-    kontrola_duplicity_v_tajence = {}
-    duplicita = [0]
+    duplicita = osetreni_duplicit_v_cisle(tajenka) 
+    # kontrola_duplicity_v_tajence = {}
+    # duplicita = [0]
 
-    for cislo in tajenka:
-        if cislo in kontrola_duplicity_v_tajence:
-            kontrola_duplicity_v_tajence[cislo] += 1
-        else:
-            kontrola_duplicity_v_tajence[cislo] = 1
+    # for cislo in tajenka:
+    #     if cislo in kontrola_duplicity_v_tajence:
+    #         kontrola_duplicity_v_tajence[cislo] += 1
+    #     else:
+    #         kontrola_duplicity_v_tajence[cislo] = 1
 
-    print(kontrola_duplicity_v_tajence)
-    for hodnota in kontrola_duplicity_v_tajence.values():
-        if hodnota > 1:
-            duplicita.pop()
-            duplicita.append(hodnota)    
+    # print(kontrola_duplicity_v_tajence)
+    # for hodnota in kontrola_duplicity_v_tajence.values():
+    #     if hodnota > 1:
+    #         duplicita.pop()
+    #         duplicita.append(hodnota)    
             
     if duplicita[0] <= 1:
         spravna_tajenka = False
@@ -55,12 +72,16 @@ while osetreni_zadani:
     hadani_uzivatele = input("Enter a number: ")
     print("Enter a number: ", hadani_uzivatele) 
     print(oddelovac)
+    duplicita_v_hadanem_cisle = osetreni_duplicit_v_cisle (hadani_uzivatele)
+    print(duplicita_v_hadanem_cisle)
     if not int(len(hadani_uzivatele)) == 4:
         print("Hadane cislo nema 4 cislice", "Zadej hadane cislo znovu", sep="\n")
     elif not hadani_uzivatele.isdigit():
         print("Hadane cislo neobsahuje jen cislice", "Zadej hadane cislo znovu", sep="\n")
     elif int(hadani_uzivatele[0]) == 0:
         print("Hadane cislo nesmi zacinat nulou", "Zadej hadane cislo znovu", sep="\n")
+    elif duplicita_v_hadanem_cisle[0] >= 1:
+        print("V hadanem cisle jsou diplicity cislic","Zadej hadane cislo znovu", sep="\n")
     else:
         osetreni_zadani = False
 
