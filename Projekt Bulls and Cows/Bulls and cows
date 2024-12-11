@@ -85,5 +85,35 @@ while osetreni_zadani:
     else:
         osetreni_zadani = False
 
+print(tajenka)
+print(hadani_uzivatele)
+#print(type(tajenka))
+#print(type(hadani_uzivatele))
 
+def vypocet_poctu_cow (vygenerovana_tajenka, tip_uzivatele):
+    vypocet_cow = set(vygenerovana_tajenka) & set(tip_uzivatele)
+    if len(vypocet_cow) >= 1:
+        print(len(vypocet_cow), "cows")
+    else:
+        print(len(vypocet_cow), "cow")    
 
+cow = vypocet_poctu_cow (tajenka,hadani_uzivatele)
+#print(cow)
+
+#print(cow)
+#print(len(cow))
+# for pocet in hadani_uzivatele:
+#     print(pocet)
+#     if pocet in tajenka:
+#         cow[pocet] +=1
+#     else:
+#         cow[pocet] = 0
+# print(cow)
+
+# cow = set(tajenka) & set(hadani_uzivatele)
+# if len(cow) >= 1:
+#     print(len(cow), "cows")
+# else:
+#     print (len(cow), "cow")    
+# print(cow)
+# print(len(cow))
