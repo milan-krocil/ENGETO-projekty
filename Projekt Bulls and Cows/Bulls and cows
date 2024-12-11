@@ -61,43 +61,53 @@ print(
     oddelovac, sep='\n'
     )
 
-#print("Enter a number: ", hadani_uzivatele) 
-#print(oddelovac)
+# def osetreni_hadaneho_cisla(osetreni_cisla):
+#     if not int(len(osetreni_cisla)) == 4:
+#         print("Hadane cislo nema 4 cislice", "Zadej hadane cislo znovu", sep="\n")
+#     elif not osetreni_cisla.isdigit():
+#         print("Hadane cislo neobsahuje jen cislice", "Zadej hadane cislo znovu", sep="\n")
+#     elif int(osetreni_cisla[0]) == 0:
+#         print("Hadane cislo nesmi zacinat nulou", "Zadej hadane cislo znovu", sep="\n")
+#     #elif duplicita_v_hadanem_cisle[0] >= 1:
+#         #print("V hadanem cisle jsou diplicity cislic","Zadej hadane cislo znovu", sep="\n")
+#     return True
+# #osetreni = osetreni_hadaneho_cisla (hadani_uzivatele)     
 
-#print(type(str(hadani_uzivatele)))
+def osetreni_hadaneho_cisla():
+    osetreni_zadani = True
+    while osetreni_zadani:
+        osetreni_cisla = input("Enter a number: ")
+        print("Enter a number: ", osetreni_cisla) 
+        print(oddelovac)
+        duplicita_v_hadanem_cisle = osetreni_duplicit_v_cisle (osetreni_cisla)
+        print(duplicita_v_hadanem_cisle)
+        if not int(len(osetreni_cisla)) == 4:
+            print("Hadane cislo nema 4 cislice", "Zadej hadane cislo znovu", sep="\n")
+        elif not osetreni_cisla.isdigit():
+            print("Hadane cislo neobsahuje jen cislice", "Zadej hadane cislo znovu", sep="\n")
+        elif int(osetreni_cisla[0]) == 0:
+            print("Hadane cislo nesmi zacinat nulou", "Zadej hadane cislo znovu", sep="\n")
+        elif duplicita_v_hadanem_cisle[0] >= 1:
+            print("V hadanem cisle jsou diplicity cislic","Zadej hadane cislo znovu", sep="\n")
+        else:
+            osetreni_zadani = False
+    return osetreni_cisla
 
-osetreni_zadani = True
-
-while osetreni_zadani:
-    hadani_uzivatele = input("Enter a number: ")
-    print("Enter a number: ", hadani_uzivatele) 
-    print(oddelovac)
-    duplicita_v_hadanem_cisle = osetreni_duplicit_v_cisle (hadani_uzivatele)
-    print(duplicita_v_hadanem_cisle)
-    if not int(len(hadani_uzivatele)) == 4:
-        print("Hadane cislo nema 4 cislice", "Zadej hadane cislo znovu", sep="\n")
-    elif not hadani_uzivatele.isdigit():
-        print("Hadane cislo neobsahuje jen cislice", "Zadej hadane cislo znovu", sep="\n")
-    elif int(hadani_uzivatele[0]) == 0:
-        print("Hadane cislo nesmi zacinat nulou", "Zadej hadane cislo znovu", sep="\n")
-    elif duplicita_v_hadanem_cisle[0] >= 1:
-        print("V hadanem cisle jsou diplicity cislic","Zadej hadane cislo znovu", sep="\n")
-    else:
-        osetreni_zadani = False
+hadani_uzivatele = osetreni_hadaneho_cisla()
 
 print(tajenka)
 print(hadani_uzivatele)
-#print(type(tajenka))
-#print(type(hadani_uzivatele))
+
 
 def vypocet_poctu_cow (vygenerovana_tajenka, tip_uzivatele):
     vypocet_cow = set(vygenerovana_tajenka) & set(tip_uzivatele)
     if len(vypocet_cow) >= 1:
         print(len(vypocet_cow), "cows")
     else:
-        print(len(vypocet_cow), "cow")    
+        print(len(vypocet_cow), "cow") 
+    return vypocet_cow   
 
-cow = vypocet_poctu_cow (tajenka,hadani_uzivatele)
+cow = vypocet_poctu_cow (tajenka, hadani_uzivatele)
 
 def vypocet_poctu_bull (cislo_z_tajenky, cislo_z_tipu_uzivatele):
     list_cislo_z_tajenky = list(cislo_z_tajenky)
@@ -110,22 +120,29 @@ def vypocet_poctu_bull (cislo_z_tajenky, cislo_z_tipu_uzivatele):
         print(vypocet_bull, "bulls")
     else:
         print(vypocet_bull, "bull")   
+    return vypocet_bull
     
-
 bull = vypocet_poctu_bull (tajenka,hadani_uzivatele)
-
-# list_tajenka = list(tajenka)
-# list_hadani_uzivatele = list(hadani_uzivatele)
-# #print(list_tajenka[0],list_hadani_uzivatele[0])
-# pocet_bull = 0
-
-# for hadani in range(len(list_tajenka)):
-#     if list_tajenka[hadani] == list_hadani_uzivatele[hadani]:
-#         pocet_bull += 1
-# print(pocet_bull)
+print(bull)
 
 
+hadani = True
+pocet_pokusu = 1
+#osetreni = osetreni_hadaneho_cisla (hadani_uzivatele)   
+while hadani:
+    if bull != 4:
+        print('neuhodnuto')
+        print("tajenka je:", tajenka)
+        print("Hadani uzivatele:", hadani_uzivatele)
+        hadani_uzivatele = osetreni_hadaneho_cisla()                   
+        cow = vypocet_poctu_cow (tajenka,hadani_uzivatele)
+        bull = vypocet_poctu_bull(tajenka,hadani_uzivatele)
+        pocet_pokusu += 1
+        #hadani = False
+    else:
+        print(hadani_uzivatele)
+        print("Correct, you've guessed the right number")
+        print("in", pocet_pokusu, "guesses!")
+        hadani = False
 
-# #for index in list_hadani:
-# #    pozice_znaku = list_tajenka.index[index]
-# print (pozice_znaku)
+print(pocet_pokusu)
