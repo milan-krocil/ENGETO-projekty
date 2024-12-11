@@ -98,22 +98,34 @@ def vypocet_poctu_cow (vygenerovana_tajenka, tip_uzivatele):
         print(len(vypocet_cow), "cow")    
 
 cow = vypocet_poctu_cow (tajenka,hadani_uzivatele)
-#print(cow)
 
-#print(cow)
-#print(len(cow))
-# for pocet in hadani_uzivatele:
-#     print(pocet)
-#     if pocet in tajenka:
-#         cow[pocet] +=1
-#     else:
-#         cow[pocet] = 0
-# print(cow)
+def vypocet_poctu_bull (cislo_z_tajenky, cislo_z_tipu_uzivatele):
+    list_cislo_z_tajenky = list(cislo_z_tajenky)
+    list_cislo_z_tipu_uzivatele = list(cislo_z_tipu_uzivatele)
+    vypocet_bull = 0
+    for hadani_bull in range(len(list_cislo_z_tajenky)):
+        if list_cislo_z_tajenky[hadani_bull] == list_cislo_z_tipu_uzivatele[hadani_bull]:
+            vypocet_bull += 1
+    if vypocet_bull >= 1:
+        print(vypocet_bull, "bulls")
+    else:
+        print(vypocet_bull, "bull")   
+    
 
-# cow = set(tajenka) & set(hadani_uzivatele)
-# if len(cow) >= 1:
-#     print(len(cow), "cows")
-# else:
-#     print (len(cow), "cow")    
-# print(cow)
-# print(len(cow))
+bull = vypocet_poctu_bull (tajenka,hadani_uzivatele)
+
+# list_tajenka = list(tajenka)
+# list_hadani_uzivatele = list(hadani_uzivatele)
+# #print(list_tajenka[0],list_hadani_uzivatele[0])
+# pocet_bull = 0
+
+# for hadani in range(len(list_tajenka)):
+#     if list_tajenka[hadani] == list_hadani_uzivatele[hadani]:
+#         pocet_bull += 1
+# print(pocet_bull)
+
+
+
+# #for index in list_hadani:
+# #    pozice_znaku = list_tajenka.index[index]
+# print (pozice_znaku)
