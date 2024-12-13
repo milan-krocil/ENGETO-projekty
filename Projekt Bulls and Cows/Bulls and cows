@@ -12,6 +12,8 @@ oddelovac = ('-' * 79)
 #### Vygenerovani tajenky a kontrola duplicit ###############################
 import random
 
+os.system('cls') 
+
 def osetreni_duplicit_v_cisle (zadana_tajenka):
     kontrola_duplicity = {}
     je_duplicita = [0]
@@ -168,11 +170,12 @@ def vypocet_poctu_bull (cislo_z_tajenky, cislo_z_tipu_uzivatele):
 bull = vypocet_poctu_bull (tajenka,hadani_uzivatele)
 #print(tisk_hadani_uzivatele)
 #print(oddelovac)
-print (cow,",",bull)
-print(oddelovac)
+# print (cow,",",bull)
+# print(oddelovac)
 #print(bull[0])
 #print(type(bull[0]))
-
+print (cow,",",bull)
+print(oddelovac)
 
 hadani = True
 pocet_pokusu = 1
@@ -181,18 +184,19 @@ while hadani:
     if int(bull[0]) != 4:
         #print(bull[0])
         #print(type(bull[0]))
-        #print(tisk_hadani_uzivatele)
-        print("tajenka je:", tajenka)
+        print(">>>> tajenka je:", tajenka)
         #print("Hadani uzivatele:", hadani_uzivatele)
         hadani_uzivatele = osetreni_hadaneho_cisla()                   
         cow = vypocet_poctu_cow (tajenka,hadani_uzivatele)
         bull = vypocet_poctu_bull(tajenka,hadani_uzivatele)
-        pocet_pokusu += 1
+        tisk_hadani_uzivatele = format_tisku_hadani_uzivatele()
         print (cow,",",bull)
         print(oddelovac)
+        pocet_pokusu += 1
+        #print(oddelovac)
                 #hadani = False
     else:
-        print('>>>', hadani_uzivatele)
+        tisk_hadani_uzivatele = format_tisku_hadani_uzivatele()
         print("Correct, you've guessed the right number")
         print("in", pocet_pokusu, "guesses!")
         print(oddelovac)
