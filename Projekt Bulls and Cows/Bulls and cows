@@ -1,3 +1,5 @@
+import os
+
 hlavicka = '''
 Bulls nad cows: druhy projekt do Engeto Online Python Akademie
 
@@ -20,7 +22,7 @@ def osetreni_duplicit_v_cisle (zadana_tajenka):
         else:
             kontrola_duplicity[zadane_cislo] = 1
 
-    print(kontrola_duplicity)
+    #print(kontrola_duplicity)
     for cislice in kontrola_duplicity.values():
         if cislice > 1:
             je_duplicita.pop()
@@ -50,7 +52,7 @@ while spravna_tajenka:
         spravna_tajenka = False
           
 ###### Zadani hrace a jeho osetreni ###############################################################          
-print(tajenka)
+#print(tajenka)
 #hadani_uzivatele = input("Enter a number: ")
 
 print(
@@ -77,10 +79,11 @@ def osetreni_hadaneho_cisla():
     osetreni_zadani = True
     while osetreni_zadani:
         osetreni_cisla = input("Enter a number: ")
-        print("Enter a number: ", osetreni_cisla) 
+        #os.system('cls')  
+        #print("Enter a number: ", osetreni_cisla) 
         print(oddelovac)
         duplicita_v_hadanem_cisle = osetreni_duplicit_v_cisle (osetreni_cisla)
-        print(duplicita_v_hadanem_cisle)
+        #print(duplicita_v_hadanem_cisle)
         if not int(len(osetreni_cisla)) == 4:
             print("Hadane cislo nema 4 cislice", "Zadej hadane cislo znovu", sep="\n")
         elif not osetreni_cisla.isdigit():
@@ -95,19 +98,46 @@ def osetreni_hadaneho_cisla():
 
 hadani_uzivatele = osetreni_hadaneho_cisla()
 
-print(tajenka)
-print(hadani_uzivatele)
+def format_tisku_hadani_uzivatele():
+    return print('>>>', hadani_uzivatele)
+tisk_hadani_uzivatele = format_tisku_hadani_uzivatele()
+
+
+    # if len(vypocet_cow) > 1:
+    #     print(len(vypocet_cow), "cows")
+    # else:
+    #     print(len(vypocet_cow), "cow,") 
+    # return print(vypocet_cow)  
+
+
+#print(tajenka)
+#print(hadani_uzivatele)
+def format_tisku_cows(tisk_cows):
+    pocet_cows = str(len(tisk_cows)) + " cows-def"
+    return pocet_cows
+
+def format_tisku_cow(tisk_cow):
+    pocet_cow = str(len(tisk_cow)) + " cow-def"
+    return pocet_cow
 
 
 def vypocet_poctu_cow (vygenerovana_tajenka, tip_uzivatele):
     vypocet_cow = set(vygenerovana_tajenka) & set(tip_uzivatele)
-    if len(vypocet_cow) >= 1:
-        print(len(vypocet_cow), "cows")
+    if len(vypocet_cow) > 1:
+        #print(len(vypocet_cow), "cows")
+       cows = format_tisku_cows(vypocet_cow)
+       print(cows)
+       vypocet_cow = cows
     else:
-        print(len(vypocet_cow), "cow") 
+       coww = format_tisku_cow(vypocet_cow) 
+       print(coww)
+       vypocet_cow = coww
+    
     return vypocet_cow   
 
+
 cow = vypocet_poctu_cow (tajenka, hadani_uzivatele)
+#print(cow)
 
 def vypocet_poctu_bull (cislo_z_tajenky, cislo_z_tipu_uzivatele):
     list_cislo_z_tajenky = list(cislo_z_tajenky)
@@ -116,14 +146,16 @@ def vypocet_poctu_bull (cislo_z_tajenky, cislo_z_tipu_uzivatele):
     for hadani_bull in range(len(list_cislo_z_tajenky)):
         if list_cislo_z_tajenky[hadani_bull] == list_cislo_z_tipu_uzivatele[hadani_bull]:
             vypocet_bull += 1
-    if vypocet_bull >= 1:
+    if vypocet_bull > 1:
         print(vypocet_bull, "bulls")
     else:
-        print(vypocet_bull, "bull")   
+        print(vypocet_bull, "bull")
+    print(oddelovac)   
     return vypocet_bull
     
 bull = vypocet_poctu_bull (tajenka,hadani_uzivatele)
-print(bull)
+#print(tisk_hadani_uzivatele)
+print (cow,",",bull)
 
 
 hadani = True
@@ -131,18 +163,21 @@ pocet_pokusu = 1
 #osetreni = osetreni_hadaneho_cisla (hadani_uzivatele)   
 while hadani:
     if bull != 4:
-        print('neuhodnuto')
+        print(tisk_hadani_uzivatele)
         print("tajenka je:", tajenka)
-        print("Hadani uzivatele:", hadani_uzivatele)
+        #print("Hadani uzivatele:", hadani_uzivatele)
         hadani_uzivatele = osetreni_hadaneho_cisla()                   
         cow = vypocet_poctu_cow (tajenka,hadani_uzivatele)
         bull = vypocet_poctu_bull(tajenka,hadani_uzivatele)
         pocet_pokusu += 1
-        #hadani = False
+        print(bull, "bulls")
+        print(oddelovac)
+                #hadani = False
     else:
-        print(hadani_uzivatele)
+        print('>>>', hadani_uzivatele)
         print("Correct, you've guessed the right number")
         print("in", pocet_pokusu, "guesses!")
+        print(oddelovac)
         hadani = False
 
-print(pocet_pokusu)
+#print(pocet_pokusu)
