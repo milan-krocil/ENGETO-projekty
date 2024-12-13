@@ -113,11 +113,11 @@ tisk_hadani_uzivatele = format_tisku_hadani_uzivatele()
 #print(tajenka)
 #print(hadani_uzivatele)
 def format_tisku_cows(tisk_cows):
-    pocet_cows = str(len(tisk_cows)) + " cows-def"
+    pocet_cows = str(len(tisk_cows)) + " cows"
     return pocet_cows
 
 def format_tisku_cow(tisk_cow):
-    pocet_cow = str(len(tisk_cow)) + " cow-def"
+    pocet_cow = str(len(tisk_cow)) + " cow"
     return pocet_cow
 
 
@@ -126,18 +126,24 @@ def vypocet_poctu_cow (vygenerovana_tajenka, tip_uzivatele):
     if len(vypocet_cow) > 1:
         #print(len(vypocet_cow), "cows")
        cows = format_tisku_cows(vypocet_cow)
-       print(cows)
+       #print(cows)
        vypocet_cow = cows
     else:
        coww = format_tisku_cow(vypocet_cow) 
-       print(coww)
+       #print(coww)
        vypocet_cow = coww
     
     return vypocet_cow   
 
-
 cow = vypocet_poctu_cow (tajenka, hadani_uzivatele)
-#print(cow)
+
+def format_tisku_bulls(tisk_bulls):
+    pocet_bulls = str(tisk_bulls) + " bulls"
+    return pocet_bulls
+
+def format_tisku_bull(tisk_bull):
+    pocet_bull = str(tisk_bull) + " bull"
+    return pocet_bull
 
 def vypocet_poctu_bull (cislo_z_tajenky, cislo_z_tipu_uzivatele):
     list_cislo_z_tajenky = list(cislo_z_tajenky)
@@ -147,30 +153,42 @@ def vypocet_poctu_bull (cislo_z_tajenky, cislo_z_tipu_uzivatele):
         if list_cislo_z_tajenky[hadani_bull] == list_cislo_z_tipu_uzivatele[hadani_bull]:
             vypocet_bull += 1
     if vypocet_bull > 1:
-        print(vypocet_bull, "bulls")
+        #print(vypocet_bull, "bulls")
+        bulls = format_tisku_bulls(vypocet_bull)
+        #print(bulls)
+        vypocet_bull = bulls
     else:
-        print(vypocet_bull, "bull")
-    print(oddelovac)   
+        #print(vypocet_bull, "bull")
+        bulll = format_tisku_bull(vypocet_bull)
+        #print(bulll)
+        vypocet_bull = bulll
+    #print(oddelovac)   
     return vypocet_bull
     
 bull = vypocet_poctu_bull (tajenka,hadani_uzivatele)
 #print(tisk_hadani_uzivatele)
+#print(oddelovac)
 print (cow,",",bull)
+print(oddelovac)
+#print(bull[0])
+#print(type(bull[0]))
 
 
 hadani = True
 pocet_pokusu = 1
 #osetreni = osetreni_hadaneho_cisla (hadani_uzivatele)   
 while hadani:
-    if bull != 4:
-        print(tisk_hadani_uzivatele)
+    if int(bull[0]) != 4:
+        #print(bull[0])
+        #print(type(bull[0]))
+        #print(tisk_hadani_uzivatele)
         print("tajenka je:", tajenka)
         #print("Hadani uzivatele:", hadani_uzivatele)
         hadani_uzivatele = osetreni_hadaneho_cisla()                   
         cow = vypocet_poctu_cow (tajenka,hadani_uzivatele)
         bull = vypocet_poctu_bull(tajenka,hadani_uzivatele)
         pocet_pokusu += 1
-        print(bull, "bulls")
+        print (cow,",",bull)
         print(oddelovac)
                 #hadani = False
     else:
