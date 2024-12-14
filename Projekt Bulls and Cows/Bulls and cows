@@ -62,7 +62,10 @@ print(
     oddelovac,
     "I've generated a random 4 digit number for you.",
     "Let's play a bulls and cows game.",
-    oddelovac, sep='\n'
+    oddelovac, 
+    "Enter a number ",
+    oddelovac,
+    sep='\n'
     )
 
 # def osetreni_hadaneho_cisla(osetreni_cisla):
@@ -76,14 +79,14 @@ print(
 #         #print("V hadanem cisle jsou diplicity cislic","Zadej hadane cislo znovu", sep="\n")
 #     return True
 # #osetreni = osetreni_hadaneho_cisla (hadani_uzivatele)     
-
+#osetreni_cisla = input("Enter a number: ")
 def osetreni_hadaneho_cisla():
     osetreni_zadani = True
     while osetreni_zadani:
-        osetreni_cisla = input("Enter a number: ")
+        osetreni_cisla = input(">>> ")
         #os.system('cls')  
         #print("Enter a number: ", osetreni_cisla) 
-        print(oddelovac)
+        #print(oddelovac)
         duplicita_v_hadanem_cisle = osetreni_duplicit_v_cisle (osetreni_cisla)
         #print(duplicita_v_hadanem_cisle)
         if not int(len(osetreni_cisla)) == 4:
@@ -100,9 +103,9 @@ def osetreni_hadaneho_cisla():
 
 hadani_uzivatele = osetreni_hadaneho_cisla()
 
-def format_tisku_hadani_uzivatele():
-    return print('>>>', hadani_uzivatele)
-tisk_hadani_uzivatele = format_tisku_hadani_uzivatele()
+# def format_tisku_hadani_uzivatele():
+#     return print('>>>', hadani_uzivatele)
+#tisk_hadani_uzivatele = format_tisku_hadani_uzivatele()
 
 
     # if len(vypocet_cow) > 1:
@@ -189,17 +192,21 @@ while hadani:
         hadani_uzivatele = osetreni_hadaneho_cisla()                   
         cow = vypocet_poctu_cow (tajenka,hadani_uzivatele)
         bull = vypocet_poctu_bull(tajenka,hadani_uzivatele)
-        tisk_hadani_uzivatele = format_tisku_hadani_uzivatele()
+        if int(bull[0]) == 4:
+            break
+        #tisk_hadani_uzivatele = format_tisku_hadani_uzivatele()
         print (cow,",",bull)
         print(oddelovac)
         pocet_pokusu += 1
         #print(oddelovac)
-                #hadani = False
+                #hadani = False            
     else:
-        tisk_hadani_uzivatele = format_tisku_hadani_uzivatele()
-        print("Correct, you've guessed the right number")
-        print("in", pocet_pokusu, "guesses!")
-        print(oddelovac)
         hadani = False
+
+#print(hadani_uzivatele)
+#tisk_hadani_uzivatele = format_tisku_hadani_uzivatele()
+print("Correct, you've guessed the right number")
+print("in", pocet_pokusu, "guesses!")
+print(oddelovac)
 
 #print(pocet_pokusu)
