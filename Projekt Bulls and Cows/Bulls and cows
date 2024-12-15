@@ -49,6 +49,12 @@ print(
 zacatek_pocitani_casu = time.time()
 
 def osetreni_hadaneho_cisla():
+    """
+    Zkontroluje, jestli zadane cislo nezacina nulou, neobsahuje duplicity,
+    zahrnuje jen cislice a jestli ma 4 cislice. Pokud nektery z techto pripadu nastane, 
+    tak na to zadavatele upozorni a vyzve k zadani spravneho formatu.
+    Funkce vraci overene cislo.
+    """
     osetreni_zadani = True
     while osetreni_zadani:
         osetreni_cisla = input("\033[31m>>>\033[0m ") 
@@ -142,6 +148,8 @@ print("\n", oddelovac, sep="\n")
 doba_hadani = round(konec_pocitani_casu-zacatek_pocitani_casu, 1)
 print("Doba hadani tajenky byla ", "\033[1m\033[32m" + str(doba_hadani) + "\033[0m", "sekund.")
 print(oddelovac)
+
+print(help(osetreni_hadaneho_cisla))
 
 # print(oddelovac)
 # statistika_poctu_pokusu =[]
