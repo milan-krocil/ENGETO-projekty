@@ -126,7 +126,6 @@ pocet_pokusu = 1
    
 while hadani:
     if int(bull[0]) != 4:
-        print(">>>> tajenka je:", tajenka)
         hadani_uzivatele = osetreni_hadaneho_cisla()                   
         cow = vypocet_poctu_cow (tajenka,hadani_uzivatele)
         bull = vypocet_poctu_bull(tajenka,hadani_uzivatele)
@@ -149,10 +148,5 @@ doba_hadani = round(konec_pocitani_casu-zacatek_pocitani_casu, 1)
 print("Doba hadani tajenky byla ", "\033[1m\033[32m" + str(doba_hadani) + "\033[0m", "sekund.")
 print(oddelovac)
 
-print(help(osetreni_hadaneho_cisla))
 
-# print(oddelovac)
-# statistika_poctu_pokusu =[]
-# statistika_poctu_pokusu.append(pocet_pokusu)
-# print(f"Pocet uspesnych pokusu: {statistika_poctu_pokusu}")
 
