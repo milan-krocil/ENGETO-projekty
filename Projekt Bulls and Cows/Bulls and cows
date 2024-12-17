@@ -148,5 +148,7 @@ doba_hadani = round(konec_pocitani_casu-zacatek_pocitani_casu, 1)
 print("Doba hadani tajenky byla ", "\033[1m\033[32m" + str(doba_hadani) + "\033[0m", "sekund.")
 print(oddelovac)
 
+print()
 
 
+ 
